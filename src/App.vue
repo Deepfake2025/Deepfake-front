@@ -1,47 +1,36 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue';
+import { RouterView } from 'vue-router';
+import detectPageCompose from './components/detectPageCompose.vue';
+    let show=ref(false)
 </script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div class="all">
+       <div class="LoginPart" v-show="show">
+            <RouterView></RouterView>
+       </div> 
+       <div class="fuctionPart" v-show="!show">
+            <detectPageCompose>
+                <RouterView></RouterView>
+            </detectPageCompose>
+       </div>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+<style  scoped>
+    .all{
+        width: 100%;
+        height: 100%;
+    }
+    .LoginPart{
+        width: 100%;
+        height: 100%;
+        background-image: url(src/assets/background/pexels-orange-ocean-243774902-28770001.jpg);
+        background-size: cover;
+    }
+    .fuctionPart{
+        width: 100%;
+        height: 100%;
+        background-image: url(src/assets/background/pexels-bilge-celik-245699833-34113467.jpg);
+        background-size: cover;
+    }
 </style>
