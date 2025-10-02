@@ -1,3 +1,3 @@
 <template>
-    视频检测
+    用户中心
 </template>

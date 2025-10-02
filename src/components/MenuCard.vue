@@ -5,25 +5,25 @@
 // 定义带样式的图标组件
 </script>
 <template>
-    <ElMenu  class="menu" background-color="#082852" >
-        <ElMenuItem class="item" >
+    <ElMenu  class="menu" background-color="#082852" :router="true" >
+        <ElMenuItem class="item" index="/Home">
             首页
         </ElMenuItem>
         <ElSubMenu class="subMenu" >
            <template #title >
                <span class="subMenutitle">可视化检测</span>
            </template>
-            <ElMenuItem class="item">
+            <ElMenuItem class="item" index="/VideoDetect">
                 视频检测
             </ElMenuItem >
-            <ElMenuItem class="item">
+            <ElMenuItem class="item" index="/AudioDetect">
                 音频检测
             </ElMenuItem >
         </ElSubMenu>
-        <ElMenuItem class="item">
+        <ElMenuItem class="item" index="/History">
             检测历史
         </ElMenuItem>
-        <ElMenuItem class="item">
+        <ElMenuItem class="item" index="/UserCenter"">
             个人中心
         </ElMenuItem>
     </ElMenu>

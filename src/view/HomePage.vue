@@ -1,3 +1,3 @@
 <template>
-    视频检测
+    首页
 </template>
