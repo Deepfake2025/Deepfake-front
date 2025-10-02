@@ -5,11 +5,11 @@
 // 定义带样式的图标组件
 </script>
 <template>
-    <ElMenu  class="menu" background-color="#082852" :router="true" >
+    <ElMenu  class="menu" background-color="#082852" router="true" >
         <ElMenuItem class="item" index="/Home">
             首页
         </ElMenuItem>
-        <ElSubMenu class="subMenu" >
+        <ElSubMenu class="subMenu" index="1">
            <template #title >
                <span class="subMenutitle">可视化检测</span>
            </template>
@@ -23,7 +23,7 @@
         <ElMenuItem class="item" index="/History">
             检测历史
         </ElMenuItem>
-        <ElMenuItem class="item" index="/UserCenter"">
+        <ElMenuItem class="item" index="/UserCenter">
             个人中心
         </ElMenuItem>
     </ElMenu>
