@@ -1,6 +1,12 @@
 <script setup>
-    import { ElForm,ElFormItem,ElInput,ElButton } from 'element-plus';
-    import { RouterLink } from 'vue-router';
+import { ElForm,ElFormItem,ElInput,ElButton } from 'element-plus';
+    import { RouterLink, useRouter } from 'vue-router';
+    //下面函数实现登录跳转
+    const router=useRouter()
+    function LoginFuction(){
+        //跳转到首页
+        router.push({path:"Home"})
+    }
 </script>
 <template>
         <ElForm class="formCard">
@@ -18,7 +24,7 @@
                 </ElInput>
             </ElFormItem>
             <ElFormItem>
-                <ElButton class="buttonPart">
+                <ElButton class="buttonPart" @click="LoginFuction">
                     登录
                 </ElButton>
             </ElFormItem>

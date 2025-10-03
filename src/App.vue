@@ -1,8 +1,19 @@
 <script setup>
-import { ref } from 'vue';
-import { RouterView } from 'vue-router';
+import { ref, watch } from 'vue';
+import { RouterView, useRouter } from 'vue-router';
 import detectPageCompose from './components/detectPageCompose.vue';
-    let show=ref(false)
+    let show=ref(true)
+    const router=useRouter()
+    //监听路由变化，控制show的值
+    watch(()=>router.currentRoute.value.path,(newPath)=>{
+        //如果路由不是登录界面和注册界面
+        console.log("当前的路由是",newPath)
+        if(newPath!="/Login"&&newPath!="/Register"){
+            show.value=false
+        }else{
+            show.value=true
+        }
+    })
 </script>
 <template>
     <div class="all">

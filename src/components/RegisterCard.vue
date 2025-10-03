@@ -29,7 +29,7 @@
             </ElFormItem>
             <ElFormItem>
                 <ElButton class="buttonPart">
-                    登录
+                    注册
                 </ElButton>
             </ElFormItem>
             <ElFormItem>
