@@ -1,30 +1,66 @@
 <script setup>
 import { ElForm,ElFormItem,ElInput,ElButton } from 'element-plus';
+import {  ref } from 'vue';
     import { RouterLink, useRouter } from 'vue-router';
+    //设置从表单获取的数据的变量
+    let loginData=ref({
+        email:"",
+        password:""
+    })
     //下面函数实现登录跳转
+    //设置表单验证
+    const rules=ref({
+        email:[{
+            //写明要对邮箱验证的功能
+            required:true,//非空
+            message:"请输入邮箱",//设置验证失败输出结果
+            trigger:"blur"//失去焦点时进行验证
+        }],
+        password:[{
+            required:true,//非空
+            message:"请输入密码",//设置验证失败输出结果
+            trigger:"blur"//失去焦点时进行验证
+        }]
+    })
+    //下面变量获取el-form组件示例，用于调用方法
+    const From=ref()
     const router=useRouter()
-    function LoginFuction(){
+    async function  LoginFuction(fromEl){
+        //获取表单数据
+        console.log("获取到的表单数据是：",loginData.value)
         //跳转到首页
-        router.push({path:"Home"})
+        //调用组件对象的验证方法
+        await fromEl.validate((valid,fields)=>{
+            //获取表单验证结果后判断是否符合规则，决定是否提交
+            if(valid){
+                //如果验证成功就跳转
+                console.log("验证成功")
+                router.push("/Home")
+            }else{
+                console.log("error",fields)
+            }
+        })
+       // router.push({path:"Home"})
     }
+ 
 </script>
 <template>
-        <ElForm class="formCard">
+        <ElForm class="formCard" :rules="rules" ref="From" :model="loginData">
             <p class="titlePart">
                 deepfake检测
             </p>
-            <ElFormItem label="账号" class="Item">
-                <ElInput>
+            <ElFormItem label="邮箱" class="Item" prop="email">
+                <ElInput v-model="loginData.email">
 
                 </ElInput>
             </ElFormItem>
-             <ElFormItem label="密码"  class="Item">
-                <ElInput>
+             <ElFormItem label="密码"  class="Item" prop="password">
+                <ElInput v-model="loginData.password" >
                     
                 </ElInput>
             </ElFormItem>
             <ElFormItem>
-                <ElButton class="buttonPart" @click="LoginFuction">
+                <ElButton class="buttonPart" @click="LoginFuction(From)">
                     登录
                 </ElButton>
             </ElFormItem>
