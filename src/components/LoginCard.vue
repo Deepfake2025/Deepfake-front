@@ -1,5 +1,6 @@
 <script setup>
-import { ElForm,ElFormItem,ElInput,ElButton } from 'element-plus';
+import api from '@/request/api';
+import { ElForm,ElFormItem,ElInput,ElButton, ElMessage } from 'element-plus';
 import {  ref } from 'vue';
     import { RouterLink, useRouter } from 'vue-router';
     //设置从表单获取的数据的变量
@@ -33,9 +34,25 @@ import {  ref } from 'vue';
         await fromEl.validate((valid,fields)=>{
             //获取表单验证结果后判断是否符合规则，决定是否提交
             if(valid){
-                //如果验证成功就跳转
+                //如果验证成功发送请求
                 console.log("验证成功")
-                router.push("/Home")
+                //接下来发送数据给后端，验证密码
+                const data={
+                    "email":loginData.value.email,
+                    "password":loginData.value.password
+                }
+                console.log("请求体的数据",data)
+                api.post("/auth/login",data).then(res=>{
+                    console.log("获取到的登录数据是,",res)
+                    ElMessage({
+                        message:"登录成功",
+                        duration:1000,
+                    })
+                    //接下来进行跳转
+                    router.push("/Home")
+                }).catch(err=>{
+                    console.log('登录失败,错误是',err)
+                })
             }else{
                 console.log("error",fields)
             }

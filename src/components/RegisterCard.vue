@@ -1,7 +1,9 @@
 <script setup>
-    import { ElForm,ElFormItem,ElInput,ElButton } from 'element-plus';
+    import { ElForm,ElFormItem,ElInput,ElButton, ElMessage } from 'element-plus';
 import { ref } from 'vue';
     import { RouterLink, useRouter } from 'vue-router';
+    //引入对接后端的api对象
+    import api from '@/request/api';
     //获取注册数据
     let registerData=ref({
         email:"",
@@ -57,7 +59,33 @@ import { ref } from 'vue';
         await fromEl.validate((valid,fields)=>{
             if(valid){
                 //输入合法实现跳转
-                router.push("/Login")
+                //向后端发送注册请求
+                //先设置请求体数据
+                const data={
+                    "email":registerData.value.email,
+                    "password":registerData.value.password
+                }
+                api.post("/auth/register",data).then(res=>{
+                    console.log("获取到的注册数据是，",res)         //判断用户是否存在
+                    //判断用户是否已经注册
+                    if(res.data.code===200){
+                        //此时用户注册成功，弹窗提示并跳转到登录页面
+                        console.log("用户注册成功")
+                        ElMessage({
+                            message:"注册成功,返回登录界面",
+                            duration:1000,
+                        })
+                        router.push("/Login")
+                    }else if(code===401){
+                        console.log("用户名已经存在，注册失败")
+                         ElMessage({
+                            message:"用户名已经存在",
+                            duration:1000,
+                        })
+                    }
+                }).catch(err=>{
+                    console.log("注册失败，错误是",err)
+                })
             }else{
                 console.log("error",fields)
             }
@@ -65,6 +93,7 @@ import { ref } from 'vue';
     }
 </script>
 <template>
+
         <ElForm class="formCard" label-position="right" label-width="auto" :model="registerData" ref="Form" 
         :rules="rules">
             <p class="titlePart">

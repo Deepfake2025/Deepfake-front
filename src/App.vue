@@ -13,6 +13,7 @@ import detectPageCompose from './components/detectPageCompose.vue';
         }else{
             show.value=true
         }
+        console.log("改变后show的值",show.value)
     })
 </script>
 <template>
