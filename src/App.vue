@@ -1,6 +1,7 @@
 <script setup>
-import { ref, watch } from 'vue';
+import {onMounted, ref, watch } from 'vue';
 import { RouterView, useRouter } from 'vue-router';
+import authService from './utils/auth';
 import detectPageCompose from './components/detectPageCompose.vue';
     let show=ref(true)
     const router=useRouter()

@@ -68,7 +68,7 @@ import { ref } from 'vue';
                 api.post("/auth/register",data).then(res=>{
                     console.log("获取到的注册数据是，",res)         //判断用户是否存在
                     //判断用户是否已经注册
-                    if(res.data.code===200){
+                    if(res.data.code===0){
                         //此时用户注册成功，弹窗提示并跳转到登录页面
                         console.log("用户注册成功")
                         ElMessage({
@@ -76,7 +76,7 @@ import { ref } from 'vue';
                             duration:1000,
                         })
                         router.push("/Login")
-                    }else if(code===401){
+                    }else if(res.data.code===401009){
                         console.log("用户名已经存在，注册失败")
                          ElMessage({
                             message:"用户名已经存在",
@@ -93,13 +93,12 @@ import { ref } from 'vue';
     }
 </script>
 <template>
-
-        <ElForm class="formCard" label-position="right" label-width="auto" :model="registerData" ref="Form" 
-        :rules="rules">
+        <ElForm class="formCard" label-position="right" label-width="auto" :model="registerData" 
+        ref="Form"  :rules="rules" >
             <p class="titlePart">
                 注册
             </p>
-              <ElFormItem label="邮箱" class="Item" prop="email">
+             <ElFormItem label="邮箱" class="Item" prop="email">
                 <ElInput v-model="registerData.email">
 
                 </ElInput>
@@ -114,14 +113,10 @@ import { ref } from 'vue';
                     
                 </ElInput>
             </ElFormItem>
-            <ElFormItem>
                 <ElButton class="buttonPart" @click="registerFuction(Form)">
                     注册
                 </ElButton>
-            </ElFormItem>
-            <ElFormItem>
                 <RouterLink to="/Login"  class="link">返回登录</RouterLink>
-            </ElFormItem>
         </ElForm>
 </template>
 <style scoped>
@@ -143,7 +138,7 @@ import { ref } from 'vue';
     .Item{
         padding: 10px;
         margin: 0;
-        width: 80%;
+        width: 85%;
     }
     .buttonPart{
         background-color: #097EFE;

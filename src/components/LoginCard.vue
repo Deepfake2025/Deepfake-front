@@ -2,7 +2,8 @@
 import api from '@/request/api';
 import { ElForm,ElFormItem,ElInput,ElButton, ElMessage } from 'element-plus';
 import {  ref } from 'vue';
-    import { RouterLink, useRouter } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
+import authService from '@/utils/auth';
     //设置从表单获取的数据的变量
     let loginData=ref({
         email:"",
@@ -48,7 +49,6 @@ import {  ref } from 'vue';
                         message:"登录成功",
                         duration:1000,
                     })
-                    //接下来进行跳转
                     router.push("/Home")
                 }).catch(err=>{
                     console.log('登录失败,错误是',err)
