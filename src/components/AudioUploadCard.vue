@@ -12,7 +12,7 @@ import { ref } from 'vue';
 <template>
    <div>
     <div class="headArea">
-        <p class="headText">视频上传</p>
+        <p class="headText">音频上传</p>
     </div>
     <div class="uploadArea">
         <ElUpload

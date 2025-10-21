@@ -1,7 +1,8 @@
 <script setup>
-import {onMounted, ref, watch } from 'vue';
+import {nextTick, onMounted, ref, watch } from 'vue';
 import { RouterView, useRouter } from 'vue-router';
 import authService from './utils/auth';
+import api from './request/api';
 import detectPageCompose from './components/detectPageCompose.vue';
     let show=ref(true)
     const router=useRouter()
@@ -16,6 +17,28 @@ import detectPageCompose from './components/detectPageCompose.vue';
         }
         console.log("改变后show的值",show.value)
     })
+    //以下为自动登录的函数
+    onMounted(()=>{
+        nextTick(()=>{
+            const data={
+                "email":"754815896@qq.com",
+                "password":"123456",
+            }
+            console.log("请求体的数据",data)
+            api.post("/auth/login",data).then(res=>{
+                console.log("获取到的登录数据是,",res)
+                ElMessage({
+                    message:"登录成功",
+                    duration:1000,
+                })
+                console.log("此时的cookie是",document.cookie)
+                router.push("/Home")
+            }).catch(err=>{
+                console.log('登录失败,错误是',err)
+            })
+        })
+    }
+    )
 </script>
 <template>
     <div class="all">

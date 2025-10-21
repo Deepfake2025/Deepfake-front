@@ -49,6 +49,7 @@ import authService from '@/utils/auth';
                         message:"登录成功",
                         duration:1000,
                     })
+                    console.log("此时的cookie是",document.cookie)
                     router.push("/Home")
                 }).catch(err=>{
                     console.log('登录失败,错误是',err)
