@@ -1,10 +1,10 @@
 <script setup>
     import UserInformationCard from '@/components/UserInformationCard.vue';
-
+    import projectIntroductionCard from '@/components/projectIntroductionCard.vue';
 </script>
 <template>
     <div class="all">
-        <UserInformationCard></UserInformationCard>
+       <project-introduction-card></project-introduction-card>
     </div>
 </template>
 <style scoped>

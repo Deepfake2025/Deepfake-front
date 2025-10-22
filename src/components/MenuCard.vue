@@ -14,7 +14,7 @@
            <template #title >
                <span class="subMenutitle">
                 <el-icon><CircleCheck /></el-icon>
-                可视化检测
+                多模态检测
                 </span>
            </template>
             <ElMenuItem class="item" index="/VideoDetect">

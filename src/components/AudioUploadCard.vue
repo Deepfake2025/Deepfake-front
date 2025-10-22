@@ -27,9 +27,11 @@ import { ref } from 'vue';
         >
             <!--设置提示-->
             <template #tip>
-                <p class="tipText">
+              <div class="center-container">
+                  <p class="tipText">
                     上传的文件的大小不可以超过200mb
-                </p>
+                    </p>
+              </div>
             </template>
             <!--设置选择文件的按钮-->
             <template #trigger> 
@@ -48,6 +50,14 @@ import { ref } from 'vue';
 
 </template>
 <style scoped>
+      .center-container {
+        /* 使用flex布局实现居中 */
+        display: flex;
+        justify-content: center; /* 水平居中 */
+        align-items: center;     /* 垂直居中 */
+        width: 100%;             /* 占满卡片头部宽度 */
+        flex-direction: row;
+    }
     .all{
         width: 100%;
         height: 100%;
