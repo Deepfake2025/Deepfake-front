@@ -5,6 +5,9 @@ import { useRouter } from 'vue-router';
     function beginDetect(){
         router.push("/AudioDetect")
     }
+    function toDetect(r){
+        router.push(r)
+    }
 
 </script>
 <template>
@@ -38,28 +41,22 @@ import { useRouter } from 'vue-router';
                 </ElText>
             </div>
             <div class="main center-container" style="flex-direction: row;justify-content: space-around;">
-                <div class="Contentcard" style="margin-left: 5%;"  >
+                <div class="Contentcard" style="margin-left: 5%;"  @click="beginDetect('/VideoDetect')">
                     <el-icon size="30px"><CircleCheck /></el-icon>
-                    <ElText class="cardText">
-                        快速检测
+                    <ElText class="cardText" >
+                        视频检测
                     </ElText>
                 </div>
-                <div class="Contentcard">
+                <div class="Contentcard" @click="beginDetect('/AudioDetect')">
                      <el-icon size="30px"><CircleCheck /></el-icon>
                     <ElText class="cardText"  >
-                        快速检测
+                        音频检测
                     </ElText>
                 </div>
-                <div class="Contentcard">
+                <div class="Contentcard" @click="beginDetect('/ImageDetect')">
                      <el-icon size="30px"  ><CircleCheck /></el-icon>
                     <ElText class="cardText">
-                        快速检测
-                    </ElText>
-                </div>
-                <div class="Contentcard" style="margin-right: 5%;" >
-                     <el-icon size="30px"><CircleCheck /></el-icon>
-                    <ElText class="cardText">
-                        快速检测
+                        图片检测
                     </ElText>
                 </div>
             </div>
@@ -111,6 +108,9 @@ import { useRouter } from 'vue-router';
         background-color: white;
         border-radius: 1cap;
     }
+     .Contentcard:hover{
+       background-color:#ECF5FF ;
+     }
     .cardText{
         font-size: 25px;
     }

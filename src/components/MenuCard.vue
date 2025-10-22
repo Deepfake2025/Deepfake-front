@@ -25,6 +25,10 @@
                 <el-icon><Microphone /></el-icon>
                 音频检测
             </ElMenuItem >
+             <ElMenuItem class="item" index="/ImageDetect">
+                <el-icon><Picture /></el-icon>
+                图片检测
+            </ElMenuItem >
         </ElSubMenu>
         <ElMenuItem class="item" index="/History">
             <el-icon><Histogram /></el-icon>
