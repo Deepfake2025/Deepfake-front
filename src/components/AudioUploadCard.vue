@@ -10,7 +10,7 @@ import { ref } from 'vue';
     // },3000)
 </script>
 <template>
-   <div>
+   <div class="all">
     <div class="headArea">
         <p class="headText">音频上传</p>
     </div>
@@ -23,6 +23,7 @@ import { ref } from 'vue';
             ref="uploadRef"
             :with-credentials="true"
             :limit="1"
+            :drag="true"
         >
             <!--设置提示-->
             <template #tip>
@@ -31,14 +32,14 @@ import { ref } from 'vue';
                 </p>
             </template>
             <!--设置选择文件的按钮-->
-            <template #trigger>
-                <ElButton>
-                    选择文件
-                </ElButton>
+            <template #trigger> 
+                <div class="trigger">
+                    拖拽或点击上传文件
+                </div>
             </template>
-            <!--向后端发送文件的按钮-->
+            <!--向后端发送文件并检测的按钮-->
             <ElButton class="deliverButton">
-                上传文件
+                检测文件
             </ElButton>
         </ElUpload>
 
@@ -47,16 +48,23 @@ import { ref } from 'vue';
 
 </template>
 <style scoped>
+    .all{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #A0CFFF;
+    }
     .headArea{
         display: flex;
         justify-content: center;
         align-items: center;
-        
     }
     .headText{
         color: black;
         font-size: 70px;
-        padding: 100px;
+        padding: 30px;
     }
     .uploadArea{
         display: flex;
@@ -70,8 +78,13 @@ import { ref } from 'vue';
     .deliverButton{
         width: 30%;
         margin-left: 35%;
+        margin-bottom: 20px;
     }
     ::v-deep .tipText{
         color: white !important;
+    }
+    .trigger{
+        width: 400px;
+        height: 80px;
     }
 </style>

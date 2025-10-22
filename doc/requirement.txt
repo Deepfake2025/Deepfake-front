@@ -10,3 +10,4 @@ element-plus: ^2.11.4
 vue: ^3.5.22
 vue-router: ^4.5.1
 axios 
+element-plus/icons-vue

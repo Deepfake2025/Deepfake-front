@@ -7,23 +7,31 @@
 <template>
     <ElMenu  class="menu" background-color="#082852" router="true" >
         <ElMenuItem class="item" index="/Home">
+            <el-icon><House /></el-icon>
             首页
         </ElMenuItem>
         <ElSubMenu class="subMenu" index="1">
            <template #title >
-               <span class="subMenutitle">可视化检测</span>
+               <span class="subMenutitle">
+                <el-icon><CircleCheck /></el-icon>
+                可视化检测
+                </span>
            </template>
             <ElMenuItem class="item" index="/VideoDetect">
+                <el-icon><VideoCamera /></el-icon>
                 视频检测
             </ElMenuItem >
             <ElMenuItem class="item" index="/AudioDetect">
+                <el-icon><Microphone /></el-icon>
                 音频检测
             </ElMenuItem >
         </ElSubMenu>
         <ElMenuItem class="item" index="/History">
+            <el-icon><Histogram /></el-icon>
             检测历史
         </ElMenuItem>
         <ElMenuItem class="item" index="/UserCenter">
+            <el-icon ><User  /></el-icon>
             个人中心
         </ElMenuItem>
     </ElMenu>
