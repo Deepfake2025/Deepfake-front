@@ -65,7 +65,7 @@ import authService from '@/utils/auth';
 <template>
         <ElForm class="formCard" :rules="rules" ref="From" :model="loginData">
             <p class="titlePart">
-                deepfake检测
+                幻海识真
             </p>
             <ElFormItem label="邮箱" class="Item" prop="email">
                 <ElInput v-model="loginData.email">

@@ -1,13 +1,26 @@
 <script setup>
     //首先引入上传器组件
-    import { ElUpload ,ElButton } from 'element-plus';
+    import { ElUpload ,ElButton, ElMessage } from 'element-plus';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
     //
+    const router = useRouter();
     const filelist=ref([])
     // const timer=setInterval(()=>{
     //     //列举文件列表的内容
     //     console.log("文件列表的内容",filelist.value)
     // },3000)
+
+    // 检测文件函数
+    function detectFile() {
+        if (filelist.value.length === 0) {
+            ElMessage.warning('请先选择要检测的文件');
+            return;
+        }
+        
+        // 直接跳转到结果页面
+        router.push('/DetectResult');
+    }
 </script>
 <template>
    <div class="all">
@@ -40,7 +53,7 @@ import { ref } from 'vue';
                 </div>
             </template>
             <!--向后端发送文件并检测的按钮-->
-            <ElButton class="deliverButton">
+            <ElButton class="deliverButton" @click="detectFile" :disabled="filelist.length === 0">
                 检测文件
             </ElButton>
         </ElUpload>

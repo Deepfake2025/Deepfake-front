@@ -8,7 +8,7 @@
             <ElHeader class="headPart">
                <div class="headContainer">
                  <p class="title">
-                    deepfake检测
+                    幻海识真
                 </p>
                 <ElAvatar  class="avatar"  shape="circle" src="https://ts1.tc.mm.bing.net/th/id/OIP-C.Y_K5zzMAmo3WTUDEmh4V4QHaDU?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3">
                 </ElAvatar>

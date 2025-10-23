@@ -9,6 +9,8 @@ import DetectHistory from "@/view/history/DetectHistory.vue";
 import ImageDetect from "@/view/fileDetect/ImageDetect.vue";
 import UserCenter from "@/view/userManage/UserCenter.vue";
 import HomePage from "@/view/HomePage.vue";
+import DetectResult from "@/view/result/DetectResult.vue"; // 新增
+
 const routes=[
     {path: '/',redirect:'/Login'},
     {path: '/Login',component:Login},
@@ -19,6 +21,7 @@ const routes=[
     {path: '/History',component:DetectHistory},
     {path: '/UserCenter',component:UserCenter},
     {path: '/Home',component:HomePage},
+    {path: '/DetectResult',component:DetectResult}, // 新增
 ]
  const router=createRouter({
     history:createMemoryHistory(),

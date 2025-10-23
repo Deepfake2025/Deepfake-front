@@ -17,7 +17,7 @@ import detectPageCompose from './components/detectPageCompose.vue';
         }
         console.log("改变后show的值",show.value)
     })
-    //以下为自动登录的函数
+/*    //以下为自动登录的函数
     onMounted(()=>{
         nextTick(()=>{
             const data={
@@ -38,7 +38,7 @@ import detectPageCompose from './components/detectPageCompose.vue';
             })
         })
     }
-    )
+    ) */
 </script>
 <template>
     <div class="all">

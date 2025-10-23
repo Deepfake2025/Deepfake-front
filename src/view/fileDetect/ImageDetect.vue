@@ -1,6 +1,6 @@
 <script setup>
     //导入组件
-    import ImageUploadCard from '@/components/imageUploadCard.vue';
+    import ImageUploadCard from '@/components/ImageUploadCard.vue'; // 修正组件名
     import { ElSteps,ElStep } from 'element-plus';
 import { ref } from 'vue';
     let active=ref(0)
@@ -9,7 +9,7 @@ import { ref } from 'vue';
     <div class="all">
         <div class="backCard">
             <p class="title">深度伪造检测</p>
-            <p class="secondTitle">检测上传的视频是否是伪造的</p>
+            <p class="secondTitle">检测上传的图片是否是伪造的</p> <!-- 修改描述文字 -->
             <div class="functionPart">
                 <div class="gudiePart">
                     <el-steps style="width: 80%;" :active="active"  finish-status="success">
@@ -29,7 +29,7 @@ import { ref } from 'vue';
 
                     </el-steps>
                 </div>
-                <image-upload-card class="detectCard"></image-upload-card>
+                <ImageUploadCard class="detectCard"></ImageUploadCard> <!-- 修正组件名 -->
             </div>
         </div>
     </div>
